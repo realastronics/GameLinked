@@ -19,6 +19,23 @@ Project structure:
 4. Run in development:
 	- `npm run dev`
 
+## Prisma + Database
+
+This backend uses Prisma and reads database connection from `.env`:
+
+- `DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/DATABASE?schema=public"`
+
+Prisma commands:
+
+- `npm run prisma:generate`
+- `npm run prisma:push`
+- `npm run prisma:studio`
+
+API routes added:
+
+- `GET /api/profiles`
+- `POST /api/profiles`
+
 Backend will run at `http://localhost:5000`.
 
 Health endpoint:

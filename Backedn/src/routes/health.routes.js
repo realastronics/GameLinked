@@ -1,13 +1,8 @@
 import { Router } from "express";
+import { getHealth } from "../controllers/health.controller.js";
 
 const router = Router();
 
-router.get("/", (_req, res) => {
-  res.json({
-    status: "ok",
-    service: "gamelinked-backend",
-    timestamp: new Date().toISOString(),
-  });
-});
+router.get("/", getHealth);
 
 export default router;

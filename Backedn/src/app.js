@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 
 import healthRouter from "./routes/health.routes.js";
+import profilesRouter from "./routes/profiles.routes.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/api/health", healthRouter);
+app.use("/api/profiles", profilesRouter);
 
 app.use((_req, res) => {
   res.status(404).json({ message: "Route not found" });

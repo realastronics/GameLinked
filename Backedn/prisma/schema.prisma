@@ -1,0 +1,258 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+///////////////////////
+// CORE LOOKUP TABLES
+///////////////////////
+
+model Game {
+  game_id     Int     @id @default(autoincrement())
+  name        String  @unique @db.VarChar(100)
+
+  players     Player[]
+  tournaments Tournaments[]
+  matches     MatchPerformance[]
+  weight      GameSkillWeight?
+}
+
+model Team {
+  team_id Int    @id @default(autoincrement())
+  name    String @unique @db.VarChar(100)
+
+  players Player[]
+}
+
+model Platform {
+  platform_id Int    @id @default(autoincrement())
+  name        String @unique @db.VarChar(50)
+
+  links       MediaLink[]
+}
+
+model SponsorBrand {
+  brand_id Int    @id @default(autoincrement())
+  name     String @unique @db.VarChar(100)
+
+  sponsors Sponsors[]
+}
+
+///////////////////////
+// PLAYER + AUTH
+///////////////////////
+
+model Player {
+  player_id  Int     @id @default(autoincrement())
+  name       String  @db.VarChar(100)
+
+  email         String  @unique @db.VarChar(150)
+  password_hash String  @db.VarChar(255)
+
+  game_id    Int
+  team_id    Int?
+
+  contact_no String? @unique @db.VarChar(20)
+
+  game       Game    @relation(fields: [game_id], references: [game_id])
+  team       Team?   @relation(fields: [team_id], references: [team_id])
+
+  profile     Profiles?
+  skillset    PlayerSkillset?
+
+  careerStats      CareerStats[]
+  sponsors         Sponsors[]
+  mediaLinks       MediaLink[]
+  trainingLogs     TrainingLogs[]
+  achievements     Achievement[]
+  matchPerformance MatchPerformance[]
+  skillEvaluations SkillEvaluationLog[]
+}
+
+///////////////////////
+// PROFILE
+///////////////////////
+
+model Profiles {
+  profile_id        Int      @id @default(autoincrement())
+  player_id         Int      @unique
+  linkedin_url      String?  @unique @db.VarChar(255)
+  summary_bio       String?
+  experience_years  Int      @default(0)
+
+  player            Player   @relation(fields: [player_id], references: [player_id], onDelete: Cascade)
+}
+
+///////////////////////
+// TOURNAMENT + STATS
+///////////////////////
+
+model Tournaments {
+  tournament_id Int      @id @default(autoincrement())
+  name          String   @db.VarChar(100)
+
+  game_id       Int
+  format        String?  @db.VarChar(50)
+  prize_pool    Decimal  @default(0) @db.Decimal(12, 2)
+  start_date    DateTime @db.Date
+  end_date      DateTime @db.Date
+
+  game          Game     @relation(fields: [game_id], references: [game_id])
+  careerStats   CareerStats[]
+}
+
+model CareerStats {
+  player_id      Int
+  tournament_id  Int
+
+  placement      Int?
+  prize_won      Decimal  @default(0) @db.Decimal(12, 2)
+  matches_played Int      @default(0)
+
+  player         Player       @relation(fields: [player_id], references: [player_id], onDelete: Cascade)
+  tournament     Tournaments  @relation(fields: [tournament_id], references: [tournament_id], onDelete: Cascade)
+
+  @@id([player_id, tournament_id])
+}
+
+///////////////////////
+// MATCH + STATS
+///////////////////////
+
+model MatchPerformance {
+  match_id     Int      @id @default(autoincrement())
+  player_id    Int
+  game_id      Int
+  match_date   DateTime
+
+  ai_evaluated Boolean  @default(false)
+
+  player       Player   @relation(fields: [player_id], references: [player_id], onDelete: Cascade)
+  game         Game     @relation(fields: [game_id], references: [game_id])
+
+  stats        MatchStats[]
+  skillEvaluations SkillEvaluationLog[]
+
+  @@index([player_id])
+  @@index([match_date])
+}
+
+model MatchStats {
+  stat_id   Int    @id @default(autoincrement())
+  match_id  Int
+  key       String
+  value     Float
+
+  match     MatchPerformance @relation(fields: [match_id], references: [match_id], onDelete: Cascade)
+}
+
+///////////////////////
+// SPONSORS
+///////////////////////
+
+model Sponsors {
+  sponsor_id     Int       @id @default(autoincrement())
+  player_id      Int
+  brand_id       Int
+
+  contact_person String?   @db.VarChar(100)
+  deal_value     Decimal   @default(0) @db.Decimal(12, 2)
+  start_date     DateTime  @db.Date
+  end_date       DateTime? @db.Date
+
+  player         Player        @relation(fields: [player_id], references: [player_id], onDelete: Cascade)
+  brand          SponsorBrand @relation(fields: [brand_id], references: [brand_id])
+}
+
+///////////////////////
+// MEDIA
+///////////////////////
+
+model MediaLink {
+  link_id     Int      @id @default(autoincrement())
+  player_id   Int
+  platform_id Int
+  url         String   @db.VarChar(255)
+  followers   Int      @default(0)
+
+  player      Player   @relation(fields: [player_id], references: [player_id], onDelete: Cascade)
+  platform    Platform @relation(fields: [platform_id], references: [platform_id])
+}
+
+///////////////////////
+// TRAINING + ACHIEVEMENTS
+///////////////////////
+
+model TrainingLogs {
+  log_id          Int      @id @default(autoincrement())
+  player_id       Int
+  log_date        DateTime @db.Date
+  hours_practiced Decimal  @default(0) @db.Decimal(4, 2)
+  notes           String?
+  games_played    Int      @default(0)
+
+  player          Player   @relation(fields: [player_id], references: [player_id], onDelete: Cascade)
+}
+
+model Achievement {
+  achievement_id Int      @id @default(autoincrement())
+  player_id      Int
+  title          String   @db.VarChar(100)
+  description    String?
+  badge_url      String?  @db.VarChar(255)
+  date_unlocked  DateTime @db.Date
+
+  player         Player   @relation(fields: [player_id], references: [player_id], onDelete: Cascade)
+}
+
+///////////////////////
+// SKILLS
+///////////////////////
+
+model PlayerSkillset {
+  player_id           Int @id
+
+  mechanical_score    Int @default(50)
+  cognitive_score     Int @default(50)
+  tactical_score      Int @default(50)
+  psychological_score Int @default(50)
+  social_score        Int @default(50)
+
+  player              Player @relation(fields: [player_id], references: [player_id], onDelete: Cascade)
+}
+
+model SkillEvaluationLog {
+  evaluation_id       Int @id @default(autoincrement())
+
+  match_id            Int
+  player_id           Int
+
+  mechanical_delta    Int @default(0)
+  cognitive_delta     Int @default(0)
+  tactical_delta      Int @default(0)
+  psychological_delta Int @default(0)
+  social_delta        Int @default(0)
+
+  evaluated_at        DateTime @default(now())
+
+  match               MatchPerformance @relation(fields: [match_id], references: [match_id], onDelete: Cascade)
+  player              Player           @relation(fields: [player_id], references: [player_id], onDelete: Cascade)
+
+  @@index([player_id])
+}
+
+model GameSkillWeight {
+  game_id               Int @id
+
+  mechanical_weight     Decimal @default(1.00) @db.Decimal(4, 2)
+  cognitive_weight      Decimal @default(1.00) @db.Decimal(4, 2)
+  tactical_weight       Decimal @default(1.00) @db.Decimal(4, 2)
+  psychological_weight  Decimal @default(1.00) @db.Decimal(4, 2)
+  social_weight         Decimal @default(1.00) @db.Decimal(4, 2)
+
+  game                  Game @relation(fields: [game_id], references: [game_id])
+}
