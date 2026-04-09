@@ -1,0 +1,1210 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ─────────────────────────────────────
+   ROOT
+───────────────────────────────────── */
+.db-root {
+  min-height: 100vh;
+  background-color: #080d12;
+  background-image:
+    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(0,180,255,0.07) 0%, transparent 65%),
+    linear-gradient(180deg, #080d12 0%, #050a0f 100%);
+  font-family: 'Rajdhani', sans-serif;
+  color: #c8d8e8;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────
+   TOP NAV
+───────────────────────────────────── */
+.db-topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 52px;
+  border-bottom: 1px solid rgba(0,180,255,0.1);
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+  gap: 24px;
+}
+
+.db-topnav-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.db-logo {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  color: #00b4ff;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.db-logo span { color: #fff; }
+
+.db-top-links {
+  display: flex;
+  gap: 4px;
+}
+.db-top-link {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #5a7a8a;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.db-top-link:hover { color: #a0c4d4; }
+.db-top-link.active {
+  color: #00b4ff;
+  background: rgba(0,180,255,0.08);
+}
+
+.db-topnav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.db-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,180,255,0.04);
+  border: 1px solid rgba(0,180,255,0.13);
+  border-radius: 4px;
+  padding: 0 12px;
+  height: 32px;
+  color: #3a5a6a;
+}
+.db-search-bar input {
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: #8aaabb;
+  width: 160px;
+  letter-spacing: 0.04em;
+}
+.db-search-bar input::placeholder { color: #2a4050; }
+
+.db-icon-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(0,180,255,0.14);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a6a7a;
+  background: rgba(0,180,255,0.03);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.db-icon-btn:hover { border-color: #00b4ff; color: #00b4ff; }
+
+/* ─────────────────────────────────────
+   BODY (SIDEBAR + MAIN)
+───────────────────────────────────── */
+.db-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ─────────────────────────────────────
+   SIDEBAR
+───────────────────────────────────── */
+.db-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0,180,255,0.09);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px;
+  gap: 6px;
+  overflow-y: auto;
+  background: rgba(5,10,15,0.6);
+}
+
+/* User Badge */
+.db-user-badge {
+  background: rgba(0,180,255,0.05);
+  border: 1px solid rgba(0,180,255,0.14);
+  border-radius: 6px;
+  padding: 12px 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.db-user-avatar {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0,180,255,0.2), rgba(0,80,160,0.3));
+  border: 2px solid rgba(0,180,255,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: #00b4ff;
+  letter-spacing: 0.05em;
+}
+
+.db-user-rank {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.1em;
+  background: #00b4ff;
+  color: #000;
+  padding: 1px 5px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.db-user-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e0f4ff;
+  letter-spacing: 0.04em;
+  margin-top: 6px;
+}
+
+.db-user-sub {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  color: #2a4a5a;
+  text-transform: uppercase;
+}
+
+.db-upgrade-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, rgba(0,180,255,0.15), rgba(0,100,180,0.12));
+  border: 1px solid rgba(0,180,255,0.3);
+  border-radius: 3px;
+  color: #00b4ff;
+  padding: 5px 8px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.15s, border-color 0.15s;
+}
+.db-upgrade-btn:hover {
+  background: rgba(0,180,255,0.2);
+  border-color: #00b4ff;
+}
+
+/* Side Nav */
+.db-sidenav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.db-sidenav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #3a5a6a;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+  transition: color 0.15s, background 0.15s;
+}
+.db-sidenav-item:hover { color: #8aaabb; background: rgba(0,180,255,0.04); }
+.db-sidenav-item.active {
+  color: #00b4ff;
+  background: rgba(0,180,255,0.08);
+  border-left: 2px solid #00b4ff;
+  padding-left: 10px;
+}
+
+/* ─────────────────────────────────────
+   MAIN
+───────────────────────────────────── */
+.db-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 20px 24px;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* ─────────────────────────────────────
+   HERO
+───────────────────────────────────── */
+.db-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.db-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  color: #00b4ff;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.db-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00b4ff;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,180,255,0.5); }
+  50%       { opacity: 0.5; box-shadow: 0 0 0 5px rgba(0,180,255,0); }
+}
+
+.db-hero-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #e8f4ff;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.db-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid rgba(0,180,255,0.14);
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.db-stat-card {
+  padding: 10px 20px;
+  text-align: right;
+}
+
+.db-stat-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
+  color: #2a4a5a;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.db-stat-val {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.5rem;
+  color: #e0f4ff;
+  letter-spacing: -0.02em;
+}
+.db-stat-val span {
+  font-size: 1rem;
+  color: #00b4ff;
+}
+
+.db-stat-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(0,180,255,0.14);
+}
+
+/* ─────────────────────────────────────
+   TABS
+───────────────────────────────────── */
+.db-tabs {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid rgba(0,180,255,0.1);
+  padding-bottom: 0;
+}
+
+.db-tab {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #4a6a7a;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.db-tab:hover { color: #8aaabb; }
+.db-tab.active {
+  color: #00b4ff;
+  border-bottom-color: #00b4ff;
+}
+
+/* ─────────────────────────────────────
+   CONTENT ROW
+───────────────────────────────────── */
+.db-content-row {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+  align-items: flex-start;
+}
+
+/* ─────────────────────────────────────
+   FILTERS PANEL
+───────────────────────────────────── */
+.db-filters {
+  width: 180px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.db-filters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: #4a7080;
+  text-transform: uppercase;
+}
+
+.db-filter-icon {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(0,180,255,0.15);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a6a7a;
+  background: rgba(0,180,255,0.04);
+  cursor: pointer;
+}
+
+.db-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.db-filter-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  color: #2a4a5a;
+  text-transform: uppercase;
+}
+
+.db-select-wrap {
+  position: relative;
+}
+.db-select {
+  width: 100%;
+  appearance: none;
+  background: rgba(0,180,255,0.04);
+  border: 1px solid rgba(0,180,255,0.16);
+  border-radius: 3px;
+  padding: 7px 28px 7px 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #8aaabb;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.db-select:focus { border-color: rgba(0,180,255,0.4); }
+.db-select-arrow {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #3a5a6a;
+  pointer-events: none;
+  display: flex;
+}
+
+.db-region-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.db-region-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  padding: 6px 0;
+  border: 1px solid rgba(0,180,255,0.14);
+  border-radius: 3px;
+  background: rgba(0,180,255,0.03);
+  color: #4a6a7a;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+.db-region-btn:hover { border-color: rgba(0,180,255,0.35); color: #8aaabb; }
+.db-region-btn.active {
+  background: rgba(0,180,255,0.14);
+  border-color: #00b4ff;
+  color: #00b4ff;
+}
+
+.db-range-wrap {
+  padding: 4px 0;
+}
+.db-range {
+  width: 100%;
+  appearance: none;
+  height: 3px;
+  background: rgba(0,180,255,0.15);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+.db-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #00b4ff;
+  border: 2px solid #080d12;
+  box-shadow: 0 0 8px rgba(0,180,255,0.5);
+  cursor: pointer;
+}
+
+.db-clear-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: #3a5a6a;
+  background: none;
+  border: 1px solid rgba(0,180,255,0.1);
+  border-radius: 3px;
+  padding: 7px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: color 0.15s, border-color 0.15s;
+}
+.db-clear-btn:hover { color: #8aaabb; border-color: rgba(0,180,255,0.3); }
+
+/* Featured Ad */
+.db-featured-ad {
+  background: rgba(0,180,255,0.04);
+  border: 1px solid rgba(0,180,255,0.16);
+  border-radius: 5px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.db-ad-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  color: #00b4ff;
+  text-transform: uppercase;
+}
+
+.db-ad-org-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0,180,255,0.1);
+  border: 1px solid rgba(0,180,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00b4ff;
+}
+
+.db-ad-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #e0f4ff;
+  letter-spacing: 0.02em;
+}
+
+.db-ad-desc {
+  font-size: 0.72rem;
+  color: #4a6a7a;
+  line-height: 1.5;
+}
+
+.db-ad-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: #00b4ff;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.15s;
+}
+.db-ad-link:hover { opacity: 0.75; }
+
+/* ─────────────────────────────────────
+   LISTINGS
+───────────────────────────────────── */
+.db-listings {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* ─────────────────────────────────────
+   JOB CARD
+───────────────────────────────────── */
+.db-jobcard {
+  background: rgba(8,18,26,0.9);
+  border: 1px solid rgba(0,180,255,0.12);
+  border-radius: 6px;
+  padding: 16px 18px;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  animation: fadeUp 0.35s ease both;
+}
+.db-jobcard:hover {
+  border-color: rgba(0,180,255,0.28);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,180,255,0.06) inset;
+}
+.db-jobcard.sponsorship {
+  background: rgba(0,180,255,0.025);
+  border-color: rgba(0,180,255,0.2);
+  border-left: 2px solid rgba(0,180,255,0.4);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.db-sponsorship-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  color: #00b4ff;
+  background: rgba(0,180,255,0.1);
+  border: 1px solid rgba(0,180,255,0.25);
+  border-radius: 3px;
+  padding: 3px 8px;
+  text-transform: uppercase;
+}
+
+.db-jobcard-top {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.db-game-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.db-jobcard-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.db-jobcard-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.db-jobcard-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #e0f4ff;
+  letter-spacing: 0.01em;
+}
+
+.db-salary-block {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.db-salary {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.88rem;
+  color: #00b4ff;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.db-salary small {
+  font-size: 0.7rem;
+  color: #3a5a6a;
+}
+.db-salary-extra {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: #3a5a6a;
+}
+
+.db-jobcard-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #4a6a7a;
+  flex-wrap: wrap;
+}
+
+.db-org { font-weight: 700; color: #6a8a9a; }
+.db-meta-dot { opacity: 0.4; }
+
+.db-salary-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  color: #2a4a5a;
+  text-transform: uppercase;
+}
+.db-salary-tag.open {
+  color: #22c55e;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 3px;
+  padding: 1px 6px;
+}
+
+.db-jobcard-desc {
+  font-size: 0.8rem;
+  color: #4a6a7a;
+  line-height: 1.55;
+}
+
+.db-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.db-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+}
+
+/* Bottom Row */
+.db-jobcard-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0,180,255,0.07);
+  gap: 12px;
+}
+
+.db-jobcard-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.db-skill-match {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.db-skill-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  color: #2a4a5a;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.db-skill-bar-wrap {
+  width: 72px;
+  height: 3px;
+  background: rgba(0,180,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.db-skill-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00b4ff, #0088ff);
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.db-skill-score {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.58rem;
+  color: #f59e0b;
+}
+
+.db-posted {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  color: #2a4a5a;
+  text-transform: uppercase;
+}
+
+.db-apply-btn {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: linear-gradient(135deg, #00b4ff, #0077cc);
+  border: none;
+  border-radius: 3px;
+  padding: 8px 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 12px rgba(0,180,255,0.25);
+  flex-shrink: 0;
+}
+.db-apply-btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 20px rgba(0,180,255,0.4);
+}
+
+.db-paid-btn {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #00b4ff;
+  background: rgba(0,180,255,0.1);
+  border: 1px solid rgba(0,180,255,0.35);
+  border-radius: 3px;
+  padding: 7px 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+}
+.db-paid-btn:hover {
+  background: rgba(0,180,255,0.18);
+  border-color: #00b4ff;
+}
+
+/* Load More */
+.db-load-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: #3a5a6a;
+  background: none;
+  border: 1px solid rgba(0,180,255,0.1);
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: color 0.15s, border-color 0.15s;
+  margin-top: 4px;
+}
+.db-load-more:hover { color: #00b4ff; border-color: rgba(0,180,255,0.3); }
+
+/* ─────────────────────────────────────
+   STATUS BAR
+───────────────────────────────────── */
+.db-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  border-top: 1px solid rgba(0,180,255,0.08);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: #1a3a4a;
+  flex-shrink: 0;
+}
+
+.db-status-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00b4ff;
+  margin-right: 6px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.db-status-icons {
+  display: flex;
+  gap: 12px;
+  color: #1a3a4a;
+}
+
+/* ─────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────── */
+.db-main::-webkit-scrollbar,
+.db-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.db-main::-webkit-scrollbar-track,
+.db-sidebar::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.2);
+}
+.db-main::-webkit-scrollbar-thumb,
+.db-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0,180,255,0.2);
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────
+   SPONSORSHIP TAB
+───────────────────────────────────── */
+.sp-brand-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 4px;
+}
+
+.sp-tier-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 2px 8px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.sp-value-block {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.sp-value {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.82rem;
+  color: #00b4ff;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+
+.sp-games {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.sp-perks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin-top: 4px;
+}
+
+.sp-perk {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+  color: #5a7a8a;
+  text-transform: uppercase;
+}
+
+.sp-perk-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00b4ff;
+  flex-shrink: 0;
+}
+
+.sp-meta-row {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sp-status-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  border-radius: 3px;
+  padding: 3px 8px;
+  text-transform: uppercase;
+}
+.sp-status-badge.open     { color: #22c55e; background: rgba(34,197,94,0.1);  border: 1px solid rgba(34,197,94,0.25); }
+.sp-status-badge.applying { color: #f59e0b; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); }
+
+/* ─────────────────────────────────────
+   TOURNAMENT TAB
+───────────────────────────────────── */
+.trn-prize-block {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.trn-prize {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  color: #f59e0b;
+  letter-spacing: -0.01em;
+  margin-top: 3px;
+}
+
+.trn-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 6px;
+}
+
+.trn-breakdown-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+  color: #5a7a8a;
+  text-transform: uppercase;
+}
+
+.trn-reg-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0,180,255,0.06);
+}
+
+.trn-reg-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+/* ─────────────────────────────────────
+   COACHING RATES TAB
+───────────────────────────────────── */
+.coach-card { transition: border-color 0.2s, box-shadow 0.2s; }
+.coach-unavailable { opacity: 0.65; }
+
+.coach-avatar {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0,180,255,0.18), rgba(100,60,200,0.2));
+  border: 2px solid rgba(0,180,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: #00b4ff;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.coach-status-dot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #080d12;
+}
+.coach-status-dot.online  { background: #22c55e; }
+.coach-status-dot.offline { background: #4a6a7a; }
+
+.coach-rank-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+  color: #f59e0b;
+  background: rgba(245,158,11,0.1);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 3px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.coach-specialty {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: #4a6a7a;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.coach-rate-block {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.coach-rate {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  color: #22c55e;
+  letter-spacing: -0.01em;
+  margin-top: 3px;
+}
+.coach-rate span {
+  font-size: 0.7rem;
+  color: #3a5a6a;
+}
+
+.coach-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.coach-stars {
+  display: flex;
+  gap: 1px;
+  font-size: 0.72rem;
+}
+
+.coach-rating-val {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  color: #f59e0b;
+  font-weight: 700;
+}
+
+.coach-reviews {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.04em;
+  color: #3a5a6a;
+}
+
+.coach-sep { color: #1a3a4a; font-size: 0.7rem; }
+
+.coach-games-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.coach-avail-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  border-radius: 3px;
+  padding: 4px 10px;
+  text-transform: uppercase;
+}
+.coach-avail-badge.yes { color: #22c55e; background: rgba(34,197,94,0.1);  border: 1px solid rgba(34,197,94,0.25); }
+.coach-avail-badge.no  { color: #4a6a7a; background: rgba(74,106,122,0.08); border: 1px solid rgba(74,106,122,0.15); }
+

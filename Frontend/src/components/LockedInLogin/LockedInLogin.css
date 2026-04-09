@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ─────────────────────────────────────
+   ROOT / PAGE
+───────────────────────────────────── */
+.li-root {
+  min-height: 100vh;
+  background-color: #0a0f14;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0, 180, 255, 0.08) 0%, transparent 70%),
+    linear-gradient(180deg, #0a0f14 0%, #070c10 100%);
+  font-family: 'Rajdhani', sans-serif;
+  color: #c8d8e8;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─────────────────────────────────────
+   NAVBAR
+───────────────────────────────────── */
+.li-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 36px;
+  border-bottom: 1px solid rgba(0, 180, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.li-logo {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.25rem;
+  color: #00b4ff;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.li-logo span { color: #ffffff; }
+
+.li-nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.li-nav-links a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #8aaabb;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.li-nav-links a:hover { color: #e0f4ff; }
+
+.li-nav-icon {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(0, 180, 255, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8aaabb;
+  transition: border-color 0.2s, color 0.2s;
+}
+.li-nav-icon:hover { border-color: #00b4ff; color: #00b4ff; }
+
+/* ─────────────────────────────────────
+   MAIN AREA
+───────────────────────────────────── */
+.li-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 80px;
+  position: relative;
+}
+
+/* ─────────────────────────────────────
+   LOGIN CARD
+───────────────────────────────────── */
+.li-card {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(10, 20, 30, 0.85);
+  border: 1px solid rgba(0, 180, 255, 0.18);
+  border-top: 2px solid rgba(0, 180, 255, 0.45);
+  border-radius: 4px;
+  padding: 44px 40px 36px;
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(0, 180, 255, 0.04) inset,
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(0, 180, 255, 0.04);
+  animation: cardIn 0.5s ease both;
+}
+
+/* top glow line */
+.li-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00b4ff, transparent);
+  border-radius: 2px;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.li-divider {
+  height: 1px;
+  background: linear-gradient(90deg, #00b4ff 0%, rgba(0, 180, 255, 0.1) 100%);
+  margin-bottom: 28px;
+}
+
+.li-card-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #e8f4ff;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+
+.li-card-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: #4a7080;
+  margin-bottom: 32px;
+}
+
+/* ─────────────────────────────────────
+   FORM FIELDS
+───────────────────────────────────── */
+.li-field { margin-bottom: 20px; }
+
+.li-field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.li-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: #4a7080;
+  text-transform: uppercase;
+}
+
+.li-recover {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: #4a7080;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.li-recover:hover { color: #00b4ff; }
+
+.li-input-wrap {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 180, 255, 0.04);
+  border: 1px solid rgba(0, 180, 255, 0.18);
+  border-radius: 3px;
+  padding: 0 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.li-input-wrap:focus-within {
+  border-color: rgba(0, 180, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(0, 180, 255, 0.07);
+}
+
+.li-input-icon {
+  color: #3a5a6a;
+  margin-right: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.li-input-wrap input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  height: 46px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: #c8d8e8;
+  letter-spacing: 0.04em;
+}
+.li-input-wrap input::placeholder { color: #2a4a5a; }
+
+/* ─────────────────────────────────────
+   PRIMARY BUTTON
+───────────────────────────────────── */
+.li-btn-primary {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, #00b4ff 0%, #0088cc 100%);
+  border: none;
+  border-radius: 3px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 8px;
+  transition: opacity 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 180, 255, 0.25);
+}
+.li-btn-primary:hover {
+  opacity: 0.92;
+  box-shadow: 0 6px 28px rgba(0, 180, 255, 0.4);
+}
+.li-btn-primary:active { opacity: 0.85; }
+.li-btn-primary.loading { opacity: 0.7; pointer-events: none; }
+
+/* ─────────────────────────────────────
+   OAUTH BUTTONS
+───────────────────────────────────── */
+.li-ext-label {
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: #2a4a5a;
+  text-transform: uppercase;
+  margin: 24px 0 14px;
+}
+
+.li-oauth-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.li-oauth-btn {
+  height: 44px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: #8aaabb;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.li-oauth-btn:hover {
+  border-color: rgba(0, 180, 255, 0.3);
+  color: #c8d8e8;
+  background: rgba(0, 180, 255, 0.05);
+}
+
+/* ─────────────────────────────────────
+   FOOTER LINK
+───────────────────────────────────── */
+.li-footer-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: #4a7080;
+  letter-spacing: 0.03em;
+}
+.li-footer-link a {
+  color: #00b4ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.li-footer-link a:hover { text-decoration: underline; }
+
+/* ─────────────────────────────────────
+   HARDWARE VERIFIED TAG
+───────────────────────────────────── */
+.li-hw-tag {
+  position: absolute;
+  bottom: 22px;
+  left: 26px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.li-hw-thumb {
+  width: 64px;
+  height: 52px;
+  background: rgba(0, 180, 255, 0.06);
+  border: 1px solid rgba(0, 180, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}
+
+.li-hw-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  color: #2a4a5a;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────
+   STATUS BAR
+───────────────────────────────────── */
+.li-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 36px;
+  border-top: 1px solid rgba(0, 180, 255, 0.08);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: #2a4a5a;
+}
+
+.li-status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00b4ff;
+  margin-right: 6px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.li-status-icons {
+  display: flex;
+  gap: 14px;
+  color: #1a3a4a;
+}

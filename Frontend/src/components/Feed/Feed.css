@@ -1,0 +1,190 @@
+.fd-root {
+  min-height: 100vh;
+  background-color: #0b1015;
+  font-family: 'Rajdhani', sans-serif;
+  color: #c8d8e8;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Topnav ── */
+.fd-topnav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: #0b1015;
+}
+.fd-topnav-left { display: flex; align-items: center; gap: 40px; }
+.fd-logo {
+  font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; font-weight: bold;
+  color: #00e5ff; text-decoration: none;
+}
+.fd-logo span { color: #fff; }
+.fd-top-links { display: flex; gap: 15px; }
+.fd-top-link {
+  font-size: 0.85rem; font-weight: 500;
+  padding: 8px 0; color: #5a7a8a; text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.fd-top-link:hover { color: #8aaabb; }
+.fd-top-link.active { color: #00e5ff; border-bottom-color: #00e5ff; }
+
+.fd-topnav-right { display: flex; align-items: center; gap: 15px; }
+
+/* ── Body ── */
+.fd-body { display: flex; flex: 1; overflow: hidden; }
+
+/* ── Sidebar ── */
+.fd-sidebar {
+  width: 220px; border-right: 1px solid rgba(255,255,255,0.05);
+  padding: 30px 20px; display: flex; flex-direction: column; background: #0b1015;
+}
+.fd-sidebar-user { margin-bottom: 40px; display: flex; gap: 12px; align-items: center; }
+.fd-sidebar-avatar {
+  width: 40px; height: 40px; border-radius: 8px; border: 1px solid #00e5ff;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,229,255,0.1); color: #00e5ff;
+}
+.fd-user-info-text { display: flex; flex-direction: column; }
+.fd-user-name { font-weight: 700; color: #fff; font-size: 1rem;}
+.fd-user-sub { font-family: 'Share Tech Mono', monospace; font-size: 0.55rem; color: #5a7a8a; text-transform: uppercase; letter-spacing: 0.05em; }
+.fd-sidenav { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.fd-sidenav-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+  background: none; border: none; color: #5a7a8a; cursor: pointer;
+  font-size: 0.85rem; font-weight: 500; border-radius: 6px; text-transform: uppercase;
+  letter-spacing: 0.05em; transition: background 0.2s, color 0.2s; text-align: left;
+}
+.fd-sidenav-item:hover { color: #fff; background: rgba(255,255,255,0.02); }
+.fd-sidenav-item.active { color: #00e5ff; background: rgba(0,229,255,0.05); }
+
+/* ── Main Profile Content ── */
+.fd-main {
+  flex: 1; padding: 40px; overflow-y: auto; background: #0f141a; position: relative;
+}
+
+.fd-banner-bg {
+  position: absolute; top: 0; left: 0; right: 0; height: 350px;
+  background: linear-gradient(180deg, rgba(0,229,255,0.1) 0%, rgba(15,20,26,1) 100%);
+  border-bottom: 1px solid rgba(0,229,255,0.05);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.fd-banner-glow {
+  width: 400px; height: 300px;
+  background: radial-gradient(circle, rgba(0,229,255,0.15) 0%, transparent 70%);
+}
+
+.fd-profile-header { position: relative; z-index: 2; margin-top: 150px; display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+
+.fd-header-left { display: flex; gap: 20px; align-items: flex-end; }
+.fd-profile-avatar {
+  width: 140px; height: 140px; border-radius: 8px; border: 2px solid #00e5ff;
+  background: #111; box-shadow: 0 0 20px rgba(0,229,255,0.3); overflow: hidden;
+  position: relative;
+}
+.fd-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.fd-profile-info { display: flex; flex-direction: column; gap: 10px; padding-bottom: 10px; }
+.fd-badges { display: flex; gap: 10px; }
+.fd-badge { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; border: 1px solid rgba(0,229,255,0.3); color: #00e5ff; padding: 4px 8px; border-radius: 4px; text-transform: uppercase;}
+.fd-badge.gold { color: #f59e0b; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.1); }
+
+.fd-player-name { font-size: 3.5rem; font-weight: 700; color: #fff; line-height: 1; margin: 0; }
+.fd-player-meta { display: flex; gap: 12px; align-items: center; font-size: 0.9rem; color: #8aaabb; }
+.fd-meta-dot { width: 4px; height: 4px; background: #5a7a8a; border-radius: 50%; }
+
+.fd-header-actions { display: flex; gap: 10px; padding-bottom: 10px; }
+.fd-btn-primary { background: #00e5ff; border: none; color: #000; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+.fd-btn-icon { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; width: 40px; height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; cursor: pointer;}
+
+/* ── Content Grid ── */
+.fd-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+/* Global Card style */
+.fd-card { background: #151a21; border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; }
+.fd-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.fd-card-title { font-size: 1.1rem; color: #fff; margin: 0; font-weight: 600;}
+.fd-card-action { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: #00e5ff; text-transform: uppercase; cursor: pointer; }
+
+/* Radar Chart */
+.fd-radar-container { flex: 1; position: relative; min-height: 250px; display: flex; align-items: center; justify-content: center; margin-top:20px; }
+.fd-radar-mock { width: 220px; height: 220px; position: relative; }
+.fd-radar-bg {
+  position: absolute; inset: 0;
+  background: repeating-radial-gradient(transparent, transparent 20px, rgba(0,229,255,0.1) 21px);
+  clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
+}
+.fd-radar-poly {
+  position: absolute; inset: 15%; background: rgba(0,229,255,0.3); border: 2px solid #00e5ff;
+  clip-path: polygon(50% 0%, 90% 40%, 75% 100%, 25% 100%, 10% 40%);
+  box-shadow: 0 0 15px rgba(0,229,255,0.4);
+}
+.fd-radar-label { position: absolute; font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; color: #5a7a8a; text-transform: uppercase; white-space: nowrap;}
+.fd-rl-1 { top: -20px; left: 50%; transform: translateX(-50%); }
+.fd-rl-2 { top: 35%; right: -30px; }
+.fd-rl-3 { bottom: -15px; right: 0px; }
+.fd-rl-4 { bottom: -15px; left: 0px; }
+.fd-rl-5 { top: 35%; left: -30px; }
+
+/* Left bars under role proficiency */
+.fd-role-bars { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; }
+.fd-role-bar-wrap { display: flex; flex-direction: column; gap: 5px; }
+.fd-role-bar-top { display: flex; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: #8aaabb; text-transform: uppercase; }
+.fd-role-bar-bg { height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; }
+.fd-role-bar-fill { height: 100%; background: #00e5ff; border-radius: 2px; }
+
+/* Season Stats */
+.fd-stats-top { display: flex; justify-content: space-between; margin-bottom: 30px; }
+.fd-stat-hero { display: flex; flex-direction: column; align-items: flex-start; }
+.fd-stat-hero .val { font-size: 1.8rem; color: #fff; font-weight: 700; line-height: 1; }
+.fd-stat-hero .lbl { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; color: #5a7a8a; text-transform: uppercase; margin-top: 4px; }
+
+.fd-stats-mid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.fd-stat-box { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; display: flex; gap: 12px; align-items: center; }
+.fd-stat-icon { color: #00e5ff; }
+.fd-stat-box .val { font-size: 0.95rem; color: #fff; font-weight: 700; }
+.fd-stat-box .lbl { font-size: 0.75rem; color: #5a7a8a; margin-top: 2px;}
+
+.fd-trend-box { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; display: flex; flex-direction: column; }
+.fd-trend-lbl { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; color: #5a7a8a; text-transform: uppercase; margin-bottom: 10px; }
+.fd-trend-bars { display: flex; align-items: flex-end; gap: 4px; height: 40px; }
+.fd-trend-bar { flex: 1; background: #5a7a8a; border-radius: 2px;}
+.fd-trend-bar.high { background: #00e5ff; }
+
+/* Recent Achievements */
+.fd-achievements { margin-top: 20px;}
+.fd-ach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.fd-ach-card { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; display: flex; flex-direction: column; }
+.fd-ach-card.gold { border-left: 2px solid #f59e0b; }
+.fd-ach-top { display: flex; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; color: #f59e0b; text-transform: uppercase; margin-bottom: 8px; }
+.fd-ach-title { font-size: 0.85rem; color: #fff; font-weight: 600; line-height: 1.3; margin-bottom: 8px;}
+.fd-ach-sub { font-size: 0.75rem; color: #5a7a8a; }
+
+/* Match History Small */
+.fd-hist-list { display: flex; flex-direction: column; gap: 10px; }
+.fd-hist-item { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; border-left: 2px solid transparent;}
+.fd-hist-item.win { border-left-color: #22c55e;}
+.fd-hist-item.loss { border-left-color: #ef4444;}
+.fd-res-block { display: flex; flex-direction: column; align-items: center; width: 60px; }
+.fd-res-lbl { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; text-transform: uppercase; }
+.fd-res-score { font-size: 1.1rem; font-weight: 700; color: #fff; }
+.fd-res-lbl.win { color: #22c55e;}
+.fd-res-lbl.loss { color: #ef4444;}
+
+.fd-match-teams { display: flex; align-items: center; gap: 10px; }
+.fd-team-tag { background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; font-weight: 700; color: #fff; }
+.fd-match-teams span { font-size: 0.8rem; color: #5a7a8a; }
+
+.fd-match-stats { display: flex; flex-direction: column; align-items:flex-end; }
+.fd-ms-val { font-size: 0.9rem; color: #fff; font-weight: 600; }
+.fd-ms-lbl { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; color: #5a7a8a; text-transform: uppercase;}
+
+/* Config & Partners */
+.fd-bottom-grid { display: grid; grid-template-columns: auto 1fr; gap: 20px;}
+.fd-config { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 15px;}
+.fd-config-row { display: flex; justify-content: space-between; font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; margin-bottom: 8px;}
+.fd-config-lbl { color: #5a7a8a; }
+.fd-config-val { color: #fff; }
+.fd-sponsor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px;}
+.fd-sponsor-box { aspect-ratio: 1.5; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #5a7a8a; font-size: 1.2rem; }
